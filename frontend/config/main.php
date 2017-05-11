@@ -41,6 +41,9 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'news-list' => 'test/index',
+                'news-prosmotr/<id:.*>' => 'test/view',
+                
             ],
         ],
         'stringHelper' => [

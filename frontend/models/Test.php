@@ -4,9 +4,16 @@ namespace frontend\models;
 
 use Yii;
 
+/**
+ * 
+ */
 class Test
 {
     
+    /**
+     * @param integer $max
+     * @return array
+     */
     public static function getNewsList($max)
     {
         $max = intval($max);
@@ -22,4 +29,18 @@ class Test
         
         return $result;        
     }
+    
+    /**
+     * @param integer $id
+     * @return array|false
+     */
+    public static function getItem($id)
+    {
+        $id = intval($id);
+        $sql = "SELECT * FROM news WHERE id = $id";
+        
+        return Yii::$app->db->createCommand($sql)->queryOne();
+    }
+    
+    
 }

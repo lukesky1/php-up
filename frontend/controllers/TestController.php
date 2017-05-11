@@ -20,6 +20,15 @@ class TestController extends Controller
         ]);
     }
     
+    public function actionView($id)
+    {
+        $item = Test::getItem($id);
+
+        return $this->render('view', [
+            'item' => $item 
+        ]);
+    }    
+
     public function actionMail()
     {
         $result = Yii::$app->mailer->compose()
