@@ -47,7 +47,7 @@ return [
             ],
         ],
         'stringHelper' => [
-            'class' => 'frontend\components\StringHelper',
+            'class' => 'common\components\StringHelper',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
