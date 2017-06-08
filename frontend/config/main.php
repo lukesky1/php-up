@@ -44,6 +44,7 @@ return [
             'rules' => [
                 'news-list' => 'test/index',
                 'news-prosmotr/<id:.*>' => 'test/view',
+                'about-me' => 'site/about',
                 
             ],
         ],

@@ -3,7 +3,7 @@
 namespace frontend\assets;
 
 use yii\web\AssetBundle;
-
+use yii\web\View;
 /**
  * Description of GalleryAsset
  *
@@ -21,5 +21,9 @@ class GalleryAsset extends AssetBundle
     
     public $depends = [
         'yii\web\JqueryAsset',  
+    ];
+    
+    public $jsOptions = [
+        'position' => View::POS_END,
     ];
 }
