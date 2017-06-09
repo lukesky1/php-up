@@ -68,5 +68,6 @@ return [
     'aliases' => [
         '@files' => '/var/www/project/frontend/web/files',
         '@photos' => '@files/photos',
+        '@images' => '/files/photos',
     ]
 ];

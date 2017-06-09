@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use Yii;
 use yii\base\Model;
 
 class Employee extends Model
@@ -39,6 +40,12 @@ class Employee extends Model
     public function save()
     {
         return true;
+    }
+    
+    public static function find()
+    {
+        $sql = 'SELECT * FROM employee';
+        return Yii::$app->db->createCommand($sql)->queryAll();
     }
 }
 
