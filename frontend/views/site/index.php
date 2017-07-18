@@ -11,6 +11,7 @@ $this->title = 'My Yii Application';
     <div class="jumbotron">
         <h1>Congratulations!</h1>
 
+        Hello, <?php if (Yii::$app->user->identity) echo Yii::$app->user->identity->username; ?>        
         <p class="lead">You have successfully created your Yii-powered application.</p>
 
         <p><a class="btn btn-lg btn-success" href="<?php echo Url::to(['newsletter/subscribe']); ?>">Subscribe to newsletter</a></p>
