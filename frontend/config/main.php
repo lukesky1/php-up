@@ -51,18 +51,6 @@ return [
         'stringHelper' => [
             'class' => 'common\components\StringHelper',
         ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            'useFileTransport' => false,
-            'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.gmail.com',
-                'username' => 'test.php.up@gmail.com',
-                'password' => '',
-                'port' => '587',
-                'encryption' => 'tls',
-            ],
-        ],
     ],
     'params' => $params,
     'aliases' => [

@@ -17,29 +17,27 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
-    
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            ['username', 'trim'],
-            ['username', 'required'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
-            [['username'], 'unique', 'targetClass' => User::className()],
-            
-            ['email', 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
-            ['email', 'string', 'max' => 255],
-            [['email'], 'unique', 'targetClass' => User::className()],
-            
-            ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+                ['username', 'trim'],
+                ['username', 'required'],
+                ['username', 'string', 'min' => 2, 'max' => 255],
+                [['username'], 'unique', 'targetClass' => User::className()],
+                ['email', 'trim'],
+                ['email', 'required'],
+                ['email', 'email'],
+                ['email', 'string', 'max' => 255],
+                [['email'], 'unique', 'targetClass' => User::className()],
+                ['password', 'required'],
+                ['password', 'string', 'min' => 6],
         ];
     }
-    
+
     /**
      * Save user
      * @return User|null
@@ -54,11 +52,28 @@ class SignupForm extends Model
             $user->updated_at = $time;
             $user->auth_key = Yii::$app->security->generateRandomString();
             $user->password_hash = Yii::$app->security->generatePasswordHash($this->password);
-            
+
             if ($user->save()) {
+
+                Yii::$app->emailService->notifyUser($user, 'Welcome');
+                Yii::$app->emailService->notifyAdmins('User registered');
+//                Yii::$app->smsService->notifyUser($user);
+//                Yii::$app->smsService->notifyAdmins('User registered');
+//                Yii::$app->smsService->notifyHeadquaters('User registered');
+//                Yii::$app->postService->sendGift($user);
+                // Other actions
+                // Other actions
+                // Other actions
+                // Other actions
+                // Other actions
+                // Other actions
+                // Other actions
+                // Other actions
+                // Other actions
+
                 return $user;
-            }         
+            }
         }
     }
-    
+
 }

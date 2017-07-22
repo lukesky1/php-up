@@ -4,6 +4,7 @@ namespace frontend\models;
 
 use Yii;
 use yii\web\IdentityInterface;
+use common\components\UserNotificationInterface;
 
 /**
  * This is the model class for table "user".
@@ -18,8 +19,9 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  */
-class User extends \yii\db\ActiveRecord implements IdentityInterface
+class User extends \yii\db\ActiveRecord implements IdentityInterface, UserNotificationInterface
 {
+
     /**
      * @inheritdoc
      */
@@ -45,17 +47,17 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'updated_at' => 'Updated At',
         ];
     }
-    
+
     public static function findByUsername($username)
     {
         return self::find()->where(['username' => $username])->one();
     }
-    
+
     public function validatePassword($password)
     {
         return Yii::$app->security->validatePassword($password, $this->password_hash);
     }
-    
+
     /**
      * Finds an identity by the given ID.
      *
@@ -102,5 +104,13 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return $this->getAuthKey() === $authKey;
     }
-    
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
 }
