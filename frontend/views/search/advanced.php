@@ -7,7 +7,7 @@ use frontend\helpers\HighlightHelper;
 ?>
 
 
-<h1>Search v.2</h1>
+<h1>Search v.3</h1>
 
 <div class="row">
     <div class="col-md-12">
