@@ -30,4 +30,18 @@ class TestController extends Controller
         return $this->render('generate');
     }
 
+    public function actionSend()
+    {
+        if (!Yii::$app->user->isGuest) {
+            if (Yii::$app->request->isPost) {
+                $receiver = Yii::$app->request->post('receiver');
+                $amount = Yii::$app->request->post('amount');
+                // Logic
+                echo "$amount$ sent to user $receiver";
+                die;
+            }
+            return $this->render('send');
+        }
+        return $this->goHome();
+    }
 }
